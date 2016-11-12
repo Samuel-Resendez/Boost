@@ -1,5 +1,6 @@
 package com.example.samresendez.boost;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,21 +47,23 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
     }
 
     @Override
-    public donationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public donationViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
         donationViewHolder dA = new donationViewHolder(v);
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(parent.getContext(),donateActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
 
         return dA;
     }
 
     @Override
     public void onBindViewHolder(donationViewHolder holder, int position) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         holder.tv.setText(namesList.get(position));
     }

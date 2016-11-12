@@ -16,7 +16,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Welcome to Boost!">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +32,11 @@
              />
         <activity
             android:name=".registerActivity"
-            android:label="Please enter your info"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".donateActivity"
-            android:label="@string/title_activity_donate"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

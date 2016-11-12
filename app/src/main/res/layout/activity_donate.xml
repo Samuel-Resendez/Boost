@@ -8,16 +8,58 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.samresendez.boost.donateActivity">
 
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorAccent"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
 
 
-    <include layout="@layout/content_donate" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/rocketShip"
+        android:background="@mipmap/boostrocket"
+        android:layout_centerHorizontal="true"
+        android:layout_width="108dp"
+        android:layout_height="221dp" />
+
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@id/rocketShip"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="5dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:alpha="0.9"
+            android:id="@+id/boostDatShit"
+            android:elevation="15dp"
+            android:background="@mipmap/boostbutton"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp" />
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <EditText
+        android:textColorHint="@color/greyColor"
+        android:textColor="@color/greyColor"
+        android:textColorHighlight="@color/greyColor"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberDecimal"
+        android:layout_alignParentBottom="true"
+        android:hint="Enter amount to boost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

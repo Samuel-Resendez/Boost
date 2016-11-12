@@ -5,85 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorPrimary"
+    android:background="@android:color/white"
     tools:context="com.example.samresendez.boost.registerActivity">
 
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textAlignment="center"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-
-        <ImageView
-            android:id="@+id/rocket"
-            android:layout_below="@id/toolbar"
-            android:background="@mipmap/boostfire"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     <ScrollView
         android:id = "@+id/registrationScroll"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="50dp"
-        android:layout_below="@id/rocket"
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/rocket"
+                android:background="@mipmap/boostfire"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text = "Please enter info:"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         <EditText
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:id = "@+id/emailOne"
             android:layout_marginTop="20dp"
             android:hint="Enter your email"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
          <EditText
              android:layout_marginTop="20dp"
+             android:layout_marginLeft="20dp"
              android:hint = "Please enter your username"
              android:id = "@+id/usernameOne"
-             android:layout_gravity="center"
-             android:layout_width="wrap_content"
+             android:layout_gravity="left"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/passwordOne"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:layout_below="@id/emailOne"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:hint="Enter a password"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text = "Register"
+                android:layout_below="@id/registrationScroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/submitRegistration" />
         </LinearLayout>
     </ScrollView>
-        <Button
-            android:textColor="@color/colorAccent"
-            android:backgroundTint="@color/colorPrimary"
-            android:alpha=".30"
-            android:text = "Register"
-            android:layout_below="@id/registrationScroll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/submitRegistration" />
-
-
-
-
-
-
-
 </RelativeLayout>

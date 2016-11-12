@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimary"
+    android:background="@android:color/white"
     tools:context="com.example.samresendez.boost.LoginActivity">
 
     <!-- Login progress -->
@@ -38,6 +38,15 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/boostlogo"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -74,7 +83,7 @@
 
             <Button
                 android:background = "@android:color/transparent"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
@@ -85,7 +94,7 @@
 
 
             <Button
-                android:textColor = "@color/colorAccent"
+                android:textColor = "@color/colorPrimary"
                 android:background="@android:color/transparent"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"

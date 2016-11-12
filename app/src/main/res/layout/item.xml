@@ -5,12 +5,11 @@
     android:layout_marginTop="5dp"
 
     android:elevation="10dp"
-    app:cardCornerRadius="10dp"
 
     android:padding="5dip">
 
         <RelativeLayout
-            android:background="@color/colorPrimary"
+            android:background="@color/greyColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
