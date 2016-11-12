@@ -9,6 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@android:color/white"
+    android:descendantFocusability="afterDescendants"
+    android:focusableInTouchMode="true"
     tools:context="com.example.samresendez.boost.LoginActivity">
 
     <!-- Login progress -->

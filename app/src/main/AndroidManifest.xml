@@ -17,7 +17,7 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="Welcome to Boost!">
+            android:label="Boost">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -42,6 +42,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -71,6 +73,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEmailView.setFocusable(true);
+                mEmailView.setFocusableInTouchMode(true);
+                mEmailView.requestFocus();
+            }
+        });
         populateAutoComplete();
 
         Button registerBtn = (Button) findViewById(R.id.registerButton);
@@ -94,6 +104,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
         });
+        mPasswordView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mPasswordView.setFocusable(true);
+                mPasswordView.setFocusableInTouchMode(true);
+                mPasswordView.requestFocus();
+            }
+        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -108,6 +127,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mEmailView.setFocusableInTouchMode(false);
+        mPasswordView.setFocusableInTouchMode(false);
+    }
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {

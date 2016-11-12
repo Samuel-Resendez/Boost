@@ -24,10 +24,12 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
     public static class donationViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
+        TextView dv;
 
         donationViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.donationName);
+            dv = (TextView) itemView.findViewById(R.id.donationDescription);
             if(tv != null) {
                 Log.e("ASDF","sound view");
             }
@@ -35,10 +37,10 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
 
     }
 
-    List<String> namesList;
+    List<donationInfo> donationInfos;
 
-    donationAdapter(List<String> names) {
-        namesList = names;
+    donationAdapter(List<donationInfo> names) {
+        donationInfos = names;
     }
 
     @Override
@@ -65,13 +67,15 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
     @Override
     public void onBindViewHolder(donationViewHolder holder, int position) {
 
-        holder.tv.setText(namesList.get(position));
+        donationInfo info = donationInfos.get(position);
+
+        holder.tv.setText(info.mTitle);
+        holder.dv.setText(info.mDescrip);
     }
 
     @Override
     public int getItemCount() {
-        Log.e("Size:",Integer.toString(namesList.size()));
-        return namesList.size();
+        return donationInfos.size();
     }
 
     @Override

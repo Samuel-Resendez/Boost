@@ -5,8 +5,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by SamResendez on 11/12/16.
@@ -21,8 +23,10 @@ public class registerAsyncTask extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
 
-        String urlString = "http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com:5000/register";
+        String urlString = "http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com/register";
         String urlParams = "email="+mEmail+"&username="+mUserName+"&password="+mPassword;
+
+        byte[] postData = urlParams.getBytes(StandardCharsets.UTF_8 );
 
         try {
 
@@ -34,7 +38,7 @@ public class registerAsyncTask extends AsyncTask {
             connection.setDoOutput(true);
 
             Log.e("urlParams;" ,urlParams);
-            Log.e("Full Url: ",urlString + urlParams);
+            Log.e("Full Url: ",urlString);
             //Safe metrics guys!
 
             connection.setReadTimeout(15000);
