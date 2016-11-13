@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name=".SearchActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="Find your cause"
             android:theme="@style/AppTheme.NoActionBar"
              />

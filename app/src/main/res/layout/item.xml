@@ -14,9 +14,9 @@
             android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:id="@+id/theFireThing"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
@@ -28,9 +28,10 @@
         <TextView
             android:id="@+id/donationDescription"
             android:layout_width="fill_parent"
+            android:layout_marginLeft="10dp"
             android:layout_height="26dip"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@id/icon"
+            android:layout_toRightOf="@id/theFireThing"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:text="Description"
@@ -41,10 +42,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/donationDescription"
+            android:layout_marginLeft="25dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="true"
-            android:layout_toRightOf="@id/icon"
+            android:layout_toRightOf="@id/theFireThing"
             android:gravity="center_vertical"
             android:text="Example application"
             android:textSize="16sp" />

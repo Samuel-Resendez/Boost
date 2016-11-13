@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,13 +30,17 @@ public class donateActivity extends AppCompatActivity {
         rocket.setImageDrawable(getResources().getDrawable(R.mipmap.boostrocket,getTheme()));
 
 
+
+
         boostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 final ImageView iV = (ImageView) findViewById(R.id.rocketShip);
 
-
+                TranslateAnimation animation = new TranslateAnimation(0,0,0,-1000);
+                animation.setDuration(2000);
+                animation.setFillAfter(true);
+                iV.setAnimation(animation);
 
                 //Start Runnable for animating
                 final Handler handler = new Handler();
@@ -57,13 +62,11 @@ public class donateActivity extends AppCompatActivity {
                             iV.setImageResource(0);
                             iV.setImageDrawable(getResources().getDrawable(R.mipmap.boostrocketthree,getTheme()));
                         }
-
-
-
-                        Log.e("Testing","THis is a test");
                         handler.postDelayed(this, 50);
                     }
                 };
+
+
 
                 handler.postDelayed(r, 50);
 
@@ -72,7 +75,7 @@ public class donateActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
                 EditText priceView = (EditText) findViewById(R.id.numberValueText);
                 String price = priceView.getText().toString();
-                if(price == "") {
+                if(price.equals("")) {
                     price = "0.0";
                 }
                 CharSequence text = "You boosted " + price + " dollars!";

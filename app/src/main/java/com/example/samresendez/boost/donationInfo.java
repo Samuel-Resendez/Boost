@@ -8,9 +8,11 @@ public class donationInfo extends Object {
 
     String mTitle;
     String mDescrip;
+    boolean isFiyah;
 
     donationInfo(String title,String descrip) {
         mTitle = title;
         mDescrip = descrip;
+        isFiyah = false;
     }
 }

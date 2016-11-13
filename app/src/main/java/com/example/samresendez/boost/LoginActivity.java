@@ -32,6 +32,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -352,14 +357,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
+
+                String parameters = "email="+mEmail+"&password="+mPassword;
+
                 // Simulate network access.
                Log.e("Placeholder: ", "Hello just here or stuff");
 
-                Thread.sleep(2000);
+                URL url = new URL("http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com/login/");
 
-            } catch (InterruptedException e) {
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setDoOutput(true);
+                OutputStream ostream = connection.getOutputStream();
+
+
+                ostream.write(parameters.getBytes());
+                ostream.flush();
+                ostream.close();
+
+            } catch (MalformedURLException e) {
+                return false;
+            } catch (IOException e) {
                 return false;
             }
+
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");

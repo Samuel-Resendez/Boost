@@ -23,11 +23,11 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     //RecyclerView Stuff
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private List<donationInfo> donationList;
+    public List<donationInfo> donationList;
     private List<donationInfo> filteredList;
 
 
@@ -35,56 +35,48 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        /*
-        EditText searchBar = (EditText) findViewById(R.id.searchBarEditText);
-        searchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    for(int l = 0; i<donationList.size();l++) {
-                        if( donationList.get(l).mTitle.contains(charSequence)) {
-                            filteredList.add(donationList.get(l));
-                        }
-                    }
-                mAdapter = new donationAdapter(filteredList);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        */
-
-
-
-
+        getDataTask datTask = new getDataTask();
+        datTask.mainActiv = this;
+        datTask.execute();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mRecyclerView = (RecyclerView) findViewById(R.id.donationRecyclerView);
         mRecyclerView.setHasFixedSize(true);
 
+        SearchView searchBar = (SearchView) findViewById(R.id.searchBarEditText);
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                s = s.toLowerCase();
+                
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+
         donationList = new ArrayList<>();
-        donationList.add(new donationInfo("World Wildlife Foundation","An organization dedicated to helping wildlife"));
+
+        //donationList.add(new donationInfo("World Wildlife Foundation","An organization dedicated to helping wildlife"));
+        /*
         donationList.add(new donationInfo("The Red Cross","A foundation dedicated to human health"));
         donationList.add(new donationInfo("Kamala Harris","A political candidate here in California!"));
         donationList.add(new donationInfo("Not Donald Trump","Not serious, just funny :)"));
         donationList.add(new donationInfo("Action Against Hunger","Organization committed to fighting hunger"));
         donationList.add(new donationInfo("Environmental Core","Committee that raises environmental awareness"));
-
+        */
 
         //use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new donationAdapter(donationList);
+       // mAdapter = new donationAdapter(donationList);
 
-        mRecyclerView.setAdapter(mAdapter);
+        //mRecyclerView.setAdapter(mAdapter);
 
         setSupportActionBar(toolbar);
 
