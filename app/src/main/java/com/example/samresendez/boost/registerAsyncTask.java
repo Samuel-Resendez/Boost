@@ -5,6 +5,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.mashape.unirest.http.Unirest;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -32,10 +34,11 @@ public class registerAsyncTask extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
         String urlString = "http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com/register";
-        String urlParams = "email=" + mEmail + "&username=" + mUserName + "&password=" + mPassword;
+       // String urlParams = "email=" + mEmail + "&username=" + mUserName + "&password=" + mPassword;
 
         try {
-
+            Unirest.post(urlString).field("email",mEmail).field("username",mUserName).field("password",mPassword);
+            /*
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
@@ -45,10 +48,7 @@ public class registerAsyncTask extends AsyncTask {
             ostream.write(urlParams.getBytes());
             ostream.flush();
             ostream.close();
-
-
-
-
+            */
          }
 
         catch(Exception e) {

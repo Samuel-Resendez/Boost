@@ -3,6 +3,7 @@ package com.example.samresendez.boost;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -40,6 +42,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.Manifest.permission.GLOBAL_SEARCH;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -124,8 +127,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
-                startActivity(intent);
+                if(Globals.getInstance().getuser() == null) {
+                    Globals.getInstance().setUser(mEmailView.getText().toString());
+                }
+                if(mEmailView.getText().toString().contains("@")) {
+                    Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+
+                    startActivity(intent);
+                }
+                else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Incorrect credentials";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                }
+
+
             }
         });
 
@@ -356,8 +376,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-
+            //try {
+                /*
                 String parameters = "email="+mEmail+"&password="+mPassword;
 
                 // Simulate network access.
@@ -373,12 +393,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ostream.write(parameters.getBytes());
                 ostream.flush();
                 ostream.close();
+                */
 
+                /*
             } catch (MalformedURLException e) {
                 return false;
             } catch (IOException e) {
                 return false;
-            }
+            }*/
 
 
             for (String credential : DUMMY_CREDENTIALS) {

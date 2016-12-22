@@ -1,6 +1,8 @@
 package com.example.samresendez.boost;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +14,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import java.net.URL;
 import java.util.List;
 import java.util.Random;
 
@@ -32,6 +36,7 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
         TextView dv;
         ImageView iV;
         boolean isFiyah;
+        String id;
 
         donationViewHolder(View itemView) {
             super(itemView);
@@ -41,6 +46,7 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
             dv = (TextView) itemView.findViewById(R.id.donationDescription);
             iV = (ImageView) itemView.findViewById(R.id.theFireThing);
             isFiyah = false;
+            id = "";
             if(tv != null) {
                 Log.e("ASDF","sound view");
             }
@@ -49,7 +55,8 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(itemView.getContext(),donateActivity.class);
-            intent.putExtra("Title_of_thing",tv.getText().toString());
+
+            intent.putExtra("Title_of_thing",id);
             itemView.getContext().startActivity(intent);
         }
 
@@ -123,10 +130,18 @@ public class donationAdapter extends RecyclerView.Adapter<donationAdapter.donati
 
         holder.tv.setText(info.mTitle);
         holder.dv.setText(info.mDescrip);
+        holder.id = info.orgId;
+        imageDownloadTask getImages = new imageDownloadTask();
+        getImages.iV = holder.iV;
+        getImages.urlString = info.imgUrl;
+        getImages.execute();
     }
 
     @Override
     public int getItemCount() {
+        if(donationInfos == null) {
+            return 0;
+        }
         return donationInfos.size();
     }
 

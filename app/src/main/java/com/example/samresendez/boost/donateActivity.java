@@ -1,6 +1,7 @@
 package com.example.samresendez.boost;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -15,19 +16,31 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mashape.unirest.http.Unirest;
+
 import java.util.Random;
 
 public class donateActivity extends AppCompatActivity {
+
+    String orgId;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        userName = Globals.getInstance().getuser();
         setSupportActionBar(toolbar);
-        Button boostButton = (Button) findViewById(R.id.boostDatShit);
+        final Button boostButton = (Button) findViewById(R.id.boostDatShit);
         final ImageView rocket = (ImageView) findViewById(R.id.rocketShip);
         rocket.setImageDrawable(getResources().getDrawable(R.mipmap.boostrocket,getTheme()));
+
+
+
+        Intent show = getIntent();
+        orgId = show.getStringExtra("Title_of_thing");
+
 
 
 
@@ -36,6 +49,18 @@ public class donateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final ImageView iV = (ImageView) findViewById(R.id.rocketShip);
+
+                EditText priceView = (EditText) findViewById(R.id.numberValueText);
+                String price = priceView.getText().toString();
+
+                boostAsyncTask boosted = new boostAsyncTask();
+                boosted.amount = price;
+                boosted.mUserName = userName;
+                boosted.id = orgId;
+                Log.e("Boutta execute","boosted boutta go");
+
+                //boosted.execute();
+
 
                 TranslateAnimation animation = new TranslateAnimation(0,0,0,-1000);
                 animation.setDuration(2000);
@@ -70,11 +95,14 @@ public class donateActivity extends AppCompatActivity {
 
                 handler.postDelayed(r, 50);
 
+
+
+
+
                 //TODO: Make some donations team!
 
                 Context context = getApplicationContext();
-                EditText priceView = (EditText) findViewById(R.id.numberValueText);
-                String price = priceView.getText().toString();
+
                 if(price.equals("")) {
                     price = "0.0";
                 }
@@ -83,6 +111,8 @@ public class donateActivity extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                priceView = (EditText) findViewById(R.id.numberValueText);
+                priceView.setText("");
             }
         });
 

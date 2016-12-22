@@ -14,18 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/menuButton"
-                    android:background="@mipmap/menubutton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
 
                 <SearchView
+                    android:showDividers="beginning"
+                    android:elevation="10dp"
+                    android:queryHint="Search"
+                    android:background="@color/greyColor"
                     android:id="@+id/searchBarEditText"
-                    android:layout_marginLeft="10dp"
                     android:hint="Search here"
-                    android:layout_toRightOf="@id/menuButton"
                     android:layout_width="match_parent"
                     android:layout_height="40dp" />
 

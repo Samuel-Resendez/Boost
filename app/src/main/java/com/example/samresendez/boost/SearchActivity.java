@@ -31,6 +31,25 @@ public class SearchActivity extends AppCompatActivity {
     private List<donationInfo> filteredList;
 
 
+
+    private static List<donationInfo> filter(List<donationInfo> baseDB, String query) {
+
+        final String theQuery = query.toLowerCase();
+         List<donationInfo> filteredModel = new ArrayList<>();
+
+            for(donationInfo model: baseDB) {
+                final String text = model.mTitle.toLowerCase();
+                if(text.contains(theQuery)){
+                    Log.e("We made it!: ","adding to the filteredModel");
+                    filteredModel.add(model);
+
+                }
+
+            }
+        return filteredModel;
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,29 +66,33 @@ public class SearchActivity extends AppCompatActivity {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                Log.e("onQueryTextSubmit",s);
                 s = s.toLowerCase();
-                
+                final List<donationInfo> filteredModelList = filter(donationList,s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
+                Log.e("onQueryTextChange",s);
+                s = s.toLowerCase();
+                final List<donationInfo> filteredModelList = filter(donationList,s);
+                Log.e("filteredModel: ", Integer.toString(filteredModelList.size()));
+                mRecyclerView.swapAdapter(new donationAdapter(filteredModelList),true);
                 return false;
             }
         });
 
 
         donationList = new ArrayList<>();
-
-        //donationList.add(new donationInfo("World Wildlife Foundation","An organization dedicated to helping wildlife"));
         /*
+        donationList.add(new donationInfo("World Wildlife Foundation","An organization dedicated to helping wildlife"));
         donationList.add(new donationInfo("The Red Cross","A foundation dedicated to human health"));
         donationList.add(new donationInfo("Kamala Harris","A political candidate here in California!"));
         donationList.add(new donationInfo("Not Donald Trump","Not serious, just funny :)"));
         donationList.add(new donationInfo("Action Against Hunger","Organization committed to fighting hunger"));
         donationList.add(new donationInfo("Environmental Core","Committee that raises environmental awareness"));
         */
-
         //use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);

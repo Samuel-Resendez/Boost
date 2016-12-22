@@ -9,10 +9,14 @@ public class donationInfo extends Object {
     String mTitle;
     String mDescrip;
     boolean isFiyah;
+    String orgId;
+    String imgUrl;
 
-    donationInfo(String title,String descrip) {
+    donationInfo(String title,String descrip, String org,String url) {
         mTitle = title;
         mDescrip = descrip;
         isFiyah = false;
+        orgId = org;
+        imgUrl = url;
     }
 }
