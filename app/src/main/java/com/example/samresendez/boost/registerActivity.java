@@ -26,14 +26,19 @@ public class registerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        EditText creditCardEditText = (EditText) findViewById(R.id.CardNumberEditText);
+        creditCardEditText.addTextChangedListener(new creditCardTextWatcher());
+
         Button registerBtn = (Button) findViewById(R.id.submitRegistration);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registerAsyncTask task = new registerAsyncTask();
+                
                 task.mEmail = ((EditText)findViewById(R.id.emailOne)).getText().toString();
                 task.mUserName = ((EditText)findViewById(R.id.usernameOne)).getText().toString();
                 task.mPassword = ((EditText)findViewById(R.id.passwordOne)).getText().toString();
+
 
                 // task.execute();
                 Globals.getInstance().setUser(task.mUserName);

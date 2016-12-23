@@ -9,6 +9,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
+    compile 'com.stripe:stripe-android:2.0.2'
     /*compile 'org.apache.httpcomponents:httpclient:4.5'
         compile 'org.apache.httpcomponents:httpmime:4.3.3'
         compile 'org.apache.httpcomponents:httpcore:4.3.2'

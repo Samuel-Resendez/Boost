@@ -38,6 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+
+
+
         <EditText
             android:layout_gravity="left"
             android:id = "@+id/emailOne"
@@ -48,6 +51,9 @@
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+
          <EditText
              android:layout_marginTop="20dp"
              android:layout_marginLeft="20dp"
@@ -68,6 +74,44 @@
             android:hint="Enter a password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:id="@+id/CardNumberEditText"
+                android:layout_gravity="left"
+                android:layout_below="@id/emailOne"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="textPassword"
+                android:hint="Credit Card Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:id="@+id/cvcEditText"
+                android:layout_gravity="left"
+                android:layout_below="@id/emailOne"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="textPassword"
+                android:hint="Enter CVC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/expirationDateEditText"
+                android:layout_gravity="left"
+                android:layout_below="@id/emailOne"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="date"
+                android:hint="Enter Expiration Date(MM/YY)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:layout_marginTop="20dp"

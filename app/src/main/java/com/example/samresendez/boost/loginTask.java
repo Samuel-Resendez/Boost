@@ -15,7 +15,6 @@ public class loginTask extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
 
-        String url = "http://ec2-35-162-210-203.us-west-2.compute.amazonaws.com/login/";
 
 
 
