@@ -34,7 +34,18 @@ public class registerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 registerAsyncTask task = new registerAsyncTask();
-                
+                String creditCardNum = ((EditText) findViewById(R.id.CardNumberEditText)).getText().toString();
+                String rawExpData = ((EditText) findViewById(R.id.expirationDateEditText)).getText().toString();
+
+                //Parse Raw Expiration Data:
+                for(int i = 0; i < rawExpData.length(); i++) {
+                    if(rawExpData.charAt(i) ==  "/") {
+                        Log.e("God Bless","Here we are");
+                        //TODO: Fix this
+                    }
+                }
+
+
                 task.mEmail = ((EditText)findViewById(R.id.emailOne)).getText().toString();
                 task.mUserName = ((EditText)findViewById(R.id.usernameOne)).getText().toString();
                 task.mPassword = ((EditText)findViewById(R.id.passwordOne)).getText().toString();
