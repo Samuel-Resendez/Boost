@@ -3,12 +3,13 @@ package com.example.samresendez.boost;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 
 /**
  * Created by SamResendez on 12/22/16.
  */
 
-public class creditCardTextWatcher extends Object implements TextWatcher {
+public class creditCardTextWatcher implements TextWatcher {
         // Change this to what you want... ' ', '-' etc..
         private static final char space = ' ';
 
@@ -22,6 +23,7 @@ public class creditCardTextWatcher extends Object implements TextWatcher {
 
         @Override
         public void afterTextChanged(Editable s) {
+            Log.e("In the textWatcher","Making sure method is called");
             // Remove spacing char
             if (s.length() > 0 && (s.length() % 5) == 0) {
                 final char c = s.charAt(s.length() - 1);
